@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EmployeesLeavesAPI.Contexts;
 using EmployeesLeavesAPI.Models;
+using EmployeesLeavesAPI.Repository;
 
 namespace EmployeesLeavesAPI.Controllers
 {
@@ -15,12 +16,14 @@ namespace EmployeesLeavesAPI.Controllers
     public class EmployeesController : ControllerBase
     {
         private readonly EmloyeeLeavesContext _context;
-
+        private readonly UnitOfWork _unitOfWork;
         public EmployeesController(EmloyeeLeavesContext context)
         {https://translate.google.com/
             _context = context;
+            //_unitOfWork = unitOfWork;
+              _unitOfWork = new UnitOfWork(_context);
         }
-
+      
         // GET: api/Employees
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
@@ -83,24 +86,30 @@ namespace EmployeesLeavesAPI.Controllers
 
         // POST: api/Employees
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        //[HttpPost]
+        //public async Task<ActionResult<Employee>> PostEmployee(Employee employee)
+        //{
+        //    if (_context.Employees == null)
+        //    {
+        //        return Problem("Entity set 'EmloyeeLeavesContext.Employees'  is null.");
+        //    }
+        //    employee.EmployeeLeaves = new List<EmployeeLeave>
+        //        {
+        //            new EmployeeLeave { LeaveTypeId = 1, AmountOfDays = 7 },
+        //            new EmployeeLeave { LeaveTypeId = 2, AmountOfDays = 14 }
+        //        };
+        //    _context.Employees.Add(employee);
+        //    await _context.SaveChangesAsync();
+
+        //    return CreatedAtAction("GetEmployee", new { id = employee.Id }, employee);
+        //}
+
         [HttpPost]
-        public async Task<ActionResult<Employee>> PostEmployee(Employee employee)
+        public void PostEmployee(Employee employee)
         {
-            if (_context.Employees == null)
-            {
-                return Problem("Entity set 'EmloyeeLeavesContext.Employees'  is null.");
-            }
-            employee.EmployeeLeaves = new List<EmployeeLeave>
-                {
-                    new EmployeeLeave { LeaveTypeId = 1, AmountOfDays = 7 },
-                    new EmployeeLeave { LeaveTypeId = 2, AmountOfDays = 14 }
-                };
-            _context.Employees.Add(employee);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetEmployee", new { id = employee.Id }, employee);
+            _unitOfWork.Employees.Add(employee);
+            _unitOfWork.Complete();
         }
-
         // DELETE: api/Employees/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteEmployee(int id)
