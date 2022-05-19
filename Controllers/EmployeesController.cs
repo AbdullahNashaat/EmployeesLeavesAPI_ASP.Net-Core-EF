@@ -17,13 +17,13 @@ namespace EmployeesLeavesAPI.Controllers
         private readonly EmloyeeLeavesContext _context;
 
         public EmployeesController(EmloyeeLeavesContext context)
-        {
+        {https://translate.google.com/
             _context = context;
         }
 
         // GET: api/Employees
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<EmployeeModel>>> GetEmployees()
+        public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
         {
             if (_context.Employees == null)
             {
@@ -34,7 +34,7 @@ namespace EmployeesLeavesAPI.Controllers
 
         // GET: api/Employees/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<EmployeeModel>> GetEmployee(int id)
+        public async Task<ActionResult<Employee>> GetEmployee(int id)
         {
             if (_context.Employees == null)
             {
@@ -53,7 +53,7 @@ namespace EmployeesLeavesAPI.Controllers
         // PUT: api/Employees/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutEmployee(int id, EmployeeModel employee)
+        public async Task<IActionResult> PutEmployee(int id, Employee employee)
         {
             if (id != employee.Id)
             {
@@ -84,7 +84,7 @@ namespace EmployeesLeavesAPI.Controllers
         // POST: api/Employees
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<EmployeeModel>> PostEmployee(EmployeeModel employee)
+        public async Task<ActionResult<Employee>> PostEmployee(Employee employee)
         {
             if (_context.Employees == null)
             {

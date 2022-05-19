@@ -49,7 +49,7 @@ namespace EmployeesLeavesAPI.Contexts
         //}
         public DbSet<EmployeeLeave> EmployeesLeaves { get; set; }
         public DbSet<LeaveType> LeaveTypes { get; set; }
-        public DbSet<EmployeeModel> Employees { get; set; }
+        public DbSet<Employee> Employees { get; set; }
         public DbSet<EmployeeLeaveDetail> EmployeeLeaveDetails { get; set; }
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
