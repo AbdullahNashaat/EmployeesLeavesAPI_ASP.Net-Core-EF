@@ -42,7 +42,7 @@ namespace EmployeesLeavesAPI.Contexts
 
             modelBuilder.Entity<LeaveType>().HasData(
                 new LeaveType { Id=1, Name= "Casual", AnnualLimit = 7 },
-                 new LeaveType { Id = 2, Name = "Schedual", AnnualLimit = 14 }
+                 new LeaveType { Id = 2, Name = "Scheduled", AnnualLimit = 14 }
                 );
         }
 

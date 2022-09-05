@@ -18,21 +18,29 @@ namespace EmployeesLeavesAPI.Controllers
         private readonly EmloyeeLeavesContext _context;
         private readonly UnitOfWork _unitOfWork;
         public EmployeesController(EmloyeeLeavesContext context)
-        {https://translate.google.com/
+        {
+        https://translate.google.com/
             _context = context;
             //_unitOfWork = unitOfWork;
-              _unitOfWork = new UnitOfWork(_context);
+            _unitOfWork = new UnitOfWork(_context);
         }
-      
+
+        //// GET: api/Employees
+        //[HttpGet]
+        //public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
+        //{
+        //    if (_context.Employees == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return await _context.Employees.ToListAsync();
+        //}
+
         // GET: api/Employees
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
+        public IEnumerable<Employee> GetEmployees()
         {
-            if (_context.Employees == null)
-            {
-                return NotFound();
-            }
-            return await _context.Employees.ToListAsync();
+            return _unitOfWork.Employees.GetAll();          
         }
 
         // GET: api/Employees/5
@@ -107,6 +115,11 @@ namespace EmployeesLeavesAPI.Controllers
         [HttpPost]
         public void PostEmployee(Employee employee)
         {
+            employee.EmployeeLeaves = new List<EmployeeLeave>
+                {
+                    new EmployeeLeave { LeaveTypeId = 1, AmountOfDays = 7 },
+                    new EmployeeLeave { LeaveTypeId = 2, AmountOfDays = 14 }
+                };
             _unitOfWork.Employees.Add(employee);
             _unitOfWork.Complete();
         }
