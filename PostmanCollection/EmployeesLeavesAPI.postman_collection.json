@@ -1,0 +1,485 @@
+{
+	"info": {
+		"_postman_id": "124ef117-1cc5-41e6-9ba2-85f27519be5b",
+		"name": "EmployeesLeavesAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20508768"
+	},
+	"item": [
+		{
+			"name": "Employees",
+			"item": [
+				{
+					"name": "Get All Employees",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44335/api/employees",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44335",
+							"path": [
+								"api",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get an Employee",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44335/api/employees/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44335",
+							"path": [
+								"api",
+								"employees",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Employee",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"name\": \"omar\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44335/api/employees",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44335",
+							"path": [
+								"api",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update an Employees",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 4,\r\n    \"name\": \"Abdullah\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44335/api/employees/4",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44335",
+							"path": [
+								"api",
+								"employees",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an Employee",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44335/api/employees/3",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44335",
+							"path": [
+								"api",
+								"employees",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Leaves Types",
+			"item": [
+				{
+					"name": "Set Leave Types",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44335/api/leavetypes/setleavetype",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44335",
+							"path": [
+								"api",
+								"leavetypes",
+								"setleavetype"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all leave types",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44335/api/leavetypes",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44335",
+							"path": [
+								"api",
+								"leavetypes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add leave type",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \r\n        \"name\": \"MyLeave\",\r\n        \"annualLimit\": 7,\r\n        \"employeeLeaves\": null\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44335/api/leavetypes",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44335",
+							"path": [
+								"api",
+								"leavetypes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Leave Type",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 2,\r\n        \"name\": \"Schedual\",\r\n        \"annualLimit\": 14,\r\n        \"employeeLeaves\": null\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44335/api/leavetypes/3",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44335",
+							"path": [
+								"api",
+								"leavetypes",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Leave Type",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44335/api/leavetypes/4",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44335",
+							"path": [
+								"api",
+								"leavetypes",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Employee Leave Balance",
+			"item": [
+				{
+					"name": "Get All Employees Leaves balance",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44335/api/EmployeeLeaves",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44335",
+							"path": [
+								"api",
+								"EmployeeLeaves"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get an Employee Leaves balance",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44335/api/EmployeeLeaves/Employee/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44335",
+							"path": [
+								"api",
+								"EmployeeLeaves",
+								"Employee",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an Employee Leave balance",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44335/api/EmployeeLeaves/10",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44335",
+							"path": [
+								"api",
+								"EmployeeLeaves",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update an Employee Leave balance",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 1,\r\n        \"employeeId\": 1,\r\n        \"leaveTypeId\": 2,\r\n        \"AmountOfDays\": \"5\",\r\n        \"employees\": null,\r\n        \"leaveTypes\": null\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44335/api/EmployeeLeaves/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44335",
+							"path": [
+								"api",
+								"EmployeeLeaves",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Leave balance",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"EmployeeId\": 1,\r\n        \"LeaveTypeId\": 2,\r\n        \"AmountOfDays\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44335/api/EmployeeLeaves",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44335",
+							"path": [
+								"api",
+								"EmployeeLeaves"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update leave balance by E_ID & LT_ID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"employeeId\": 1,\r\n        \"leaveTypeId\": 2,\r\n        \"AmountOfDays\": \"30\"\r\n    \r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44335/api/EmployeeLeaves/changeammount",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44335",
+							"path": [
+								"api",
+								"EmployeeLeaves",
+								"changeammount"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Employee Leave Details",
+			"item": [
+				{
+					"name": "Get All Leaves",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44335/api/EmployeeLeaveDetails",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44335",
+							"path": [
+								"api",
+								"EmployeeLeaveDetails"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Leave",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"EmployeeLeaveId\": 7,\r\n        \"StartDate\": \"2022-05-25\",\r\n        \"EndDate\":\"2022-05-26\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44335/api/EmployeeLeaveDetails",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44335",
+							"path": [
+								"api",
+								"EmployeeLeaveDetails"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

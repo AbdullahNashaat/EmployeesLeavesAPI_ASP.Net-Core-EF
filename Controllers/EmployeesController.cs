@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EmployeesLeavesAPI.Contexts;
 using EmployeesLeavesAPI.Models;
+using EmployeesLeavesAPI.Repository;
 
 namespace EmployeesLeavesAPI.Controllers
 {
@@ -15,26 +16,36 @@ namespace EmployeesLeavesAPI.Controllers
     public class EmployeesController : ControllerBase
     {
         private readonly EmloyeeLeavesContext _context;
-
+        private readonly UnitOfWork _unitOfWork;
         public EmployeesController(EmloyeeLeavesContext context)
         {
+        https://translate.google.com/
             _context = context;
+            //_unitOfWork = unitOfWork;
+            _unitOfWork = new UnitOfWork(_context);
         }
+
+        //// GET: api/Employees
+        //[HttpGet]
+        //public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
+        //{
+        //    if (_context.Employees == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return await _context.Employees.ToListAsync();
+        //}
 
         // GET: api/Employees
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<EmployeeModel>>> GetEmployees()
+        public IEnumerable<Employee> GetEmployees()
         {
-            if (_context.Employees == null)
-            {
-                return NotFound();
-            }
-            return await _context.Employees.ToListAsync();
+            return _unitOfWork.Employees.GetAll();          
         }
 
         // GET: api/Employees/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<EmployeeModel>> GetEmployee(int id)
+        public async Task<ActionResult<Employee>> GetEmployee(int id)
         {
             if (_context.Employees == null)
             {
@@ -53,7 +64,7 @@ namespace EmployeesLeavesAPI.Controllers
         // PUT: api/Employees/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutEmployee(int id, EmployeeModel employee)
+        public async Task<IActionResult> PutEmployee(int id, Employee employee)
         {
             if (id != employee.Id)
             {
@@ -83,24 +94,35 @@ namespace EmployeesLeavesAPI.Controllers
 
         // POST: api/Employees
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        //[HttpPost]
+        //public async Task<ActionResult<Employee>> PostEmployee(Employee employee)
+        //{
+        //    if (_context.Employees == null)
+        //    {
+        //        return Problem("Entity set 'EmloyeeLeavesContext.Employees'  is null.");
+        //    }
+        //    employee.EmployeeLeaves = new List<EmployeeLeave>
+        //        {
+        //            new EmployeeLeave { LeaveTypeId = 1, AmountOfDays = 7 },
+        //            new EmployeeLeave { LeaveTypeId = 2, AmountOfDays = 14 }
+        //        };
+        //    _context.Employees.Add(employee);
+        //    await _context.SaveChangesAsync();
+
+        //    return CreatedAtAction("GetEmployee", new { id = employee.Id }, employee);
+        //}
+
         [HttpPost]
-        public async Task<ActionResult<EmployeeModel>> PostEmployee(EmployeeModel employee)
+        public void PostEmployee(Employee employee)
         {
-            if (_context.Employees == null)
-            {
-                return Problem("Entity set 'EmloyeeLeavesContext.Employees'  is null.");
-            }
             employee.EmployeeLeaves = new List<EmployeeLeave>
                 {
                     new EmployeeLeave { LeaveTypeId = 1, AmountOfDays = 7 },
                     new EmployeeLeave { LeaveTypeId = 2, AmountOfDays = 14 }
                 };
-            _context.Employees.Add(employee);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetEmployee", new { id = employee.Id }, employee);
+            _unitOfWork.Employees.Add(employee);
+            _unitOfWork.Complete();
         }
-
         // DELETE: api/Employees/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteEmployee(int id)

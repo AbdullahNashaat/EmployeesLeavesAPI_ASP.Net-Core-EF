@@ -9,7 +9,7 @@ namespace EmployeesLeavesAPI.Models
         public int EmployeeId { get; set; }
         public int LeaveTypeId { get; set; }
         public int AmountOfDays { get; set; }
-        public virtual EmployeeModel? employee { get; set; }
+        public virtual Employee? employee { get; set; }
         public virtual LeaveType? leaveType { get; set; }
     }
 }

@@ -42,14 +42,14 @@ namespace EmployeesLeavesAPI.Contexts
 
             modelBuilder.Entity<LeaveType>().HasData(
                 new LeaveType { Id=1, Name= "Casual", AnnualLimit = 7 },
-                 new LeaveType { Id = 2, Name = "Schedual", AnnualLimit = 14 }
+                 new LeaveType { Id = 2, Name = "Scheduled", AnnualLimit = 14 }
                 );
         }
 
         //}
         public DbSet<EmployeeLeave> EmployeesLeaves { get; set; }
         public DbSet<LeaveType> LeaveTypes { get; set; }
-        public DbSet<EmployeeModel> Employees { get; set; }
+        public DbSet<Employee> Employees { get; set; }
         public DbSet<EmployeeLeaveDetail> EmployeeLeaveDetails { get; set; }
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{

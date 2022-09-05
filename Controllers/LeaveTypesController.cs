@@ -100,7 +100,7 @@ namespace EmployeesLeavesAPI.Controllers
         {
            
             saveLeavesTypes("Casual", 7);          
-            saveLeavesTypes("Schedual", 14);
+            saveLeavesTypes("Scheduled", 14);
             saveLeavesTypes("Military", 8);
             saveLeavesTypes("Parental", 30);
 
